@@ -1,16 +1,12 @@
 import React from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from '@mui/material';
 
+import { User } from '../../types/UserCardProps';
+
 interface UserModalProps {
   open: boolean;
   onClose: () => void;
-  user: {
-    firstname: string;
-    lastname: string;
-    description: string;
-    avatar: string;
-    role: string;
-  };
+  user: User;
 }
 
 const UserModal: React.FC<UserModalProps> = ({ open, onClose, user }) => {
@@ -22,10 +18,19 @@ const UserModal: React.FC<UserModalProps> = ({ open, onClose, user }) => {
       <DialogContent>
         <img src={user.avatar} alt={`${user.firstname} ${user.lastname}`} style={{ width: '100%', borderRadius: '8px' }} />
         <Typography variant="body1" gutterBottom>
-          {user.description}
+          Username: {user.username}
         </Typography>
-        <Typography variant="body2" color="textSecondary">
-          {user.role}
+        <Typography variant="body1" gutterBottom>
+          Email: {user.email}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          Role: {user.role}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          Join Date: {user.join_date}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          Description: {user.description}
         </Typography>
       </DialogContent>
       <DialogActions>

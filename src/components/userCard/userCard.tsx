@@ -3,16 +3,9 @@ import { Card, CardContent, Typography, Button, Box, Avatar } from '@mui/materia
 import UserModal from '../userModal/userModal';
 import './userCard.css';
 
-interface UserCardProps {
-  id: number;
-  firstname: string;
-  lastname: string;
-  description: string;
-  avatar: string;
-  role: string;
-}
+import { UserCardProps } from '../../types/UserCardProps';
 
-const UserCard: React.FC<UserCardProps> = ({ firstname, lastname, description, avatar, role }) => {
+const UserCard: React.FC<UserCardProps> = ({ id, username, firstname, lastname, email, join_date, description, avatar, role }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -51,7 +44,7 @@ const UserCard: React.FC<UserCardProps> = ({ firstname, lastname, description, a
       <UserModal
         open={modalOpen}
         onClose={handleCloseModal}
-        user={{ firstname, lastname, description, avatar, role }}
+        user={{id, username, firstname, lastname, email, avatar, role, join_date, description }}
       />
     </>
   );

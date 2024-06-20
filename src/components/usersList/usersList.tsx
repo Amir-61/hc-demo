@@ -2,14 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import UserCard from '../userCard/userCard';
 
-interface User {
-  id: number;
-  firstname: string;
-  lastname: string;
-  description: string;
-  avatar: string;
-  role: string;
-}
+import { User } from '../../types/UserCardProps';
 
 interface UsersListProps {
   users: User[];
@@ -28,6 +21,9 @@ const UsersList: React.FC<UsersListProps> = ({ users }) => {
               description={user.description}
               avatar={user.avatar}
               role={user.role}
+              username={user.username}
+              email={user.email}
+              join_date={user.join_date}
             />
           </Grid>
         ))
