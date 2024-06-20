@@ -7,13 +7,8 @@ import { UserCardProps } from '../../types/UserCardProps';
 const UserCard: React.FC<UserCardProps> = ({ id, username, firstname, lastname, email, join_date, description, avatar, role }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
 
   return (
     <>

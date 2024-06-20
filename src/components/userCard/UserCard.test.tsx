@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { act } from 'react';
-import UserCard from './userCard';
+import { act } from 'react-dom/test-utils';
+import UserModal from '../userModal/userModal';
 import { User } from '../../types/UserCardProps';
 
 const mockUser: User = {
@@ -16,17 +16,24 @@ const mockUser: User = {
   description: 'Test description',
 };
 
-test('renders UserCard component', () => {
-  render(<UserCard {...mockUser} />);
+test('renders UserModal component', async () => {
+  await act(async () => {
+    render(<UserModal open={true} onClose={() => {}} user={mockUser} />);
+  });
   expect(screen.getByText(`${mockUser.firstname} ${mockUser.lastname}`)).toBeInTheDocument();
-  expect(screen.getByText('Test description')).toBeInTheDocument();
+  expect(screen.getByText(`Username: ${mockUser.username}`)).toBeInTheDocument();
+  expect(screen.getByText(`Email: ${mockUser.email}`)).toBeInTheDocument();
+  expect(screen.getByText(`Role: ${mockUser.role}`)).toBeInTheDocument();
+  expect(screen.getByText(`Join Date: ${mockUser.join_date}`)).toBeInTheDocument();
+  expect(screen.getByText(`Description: ${mockUser.description}`)).toBeInTheDocument();
 });
 
-test('opens modal on button click', async () => {
+test('closes modal on button click', async () => {
+  const handleClose = jest.fn();
   await act(async () => {
-    render(<UserCard {...mockUser} />);
+    render(<UserModal open={true} onClose={handleClose} user={mockUser} />);
   });
-  const button = screen.getByText('View More');
+  const button = screen.getByText('Close');
   fireEvent.click(button);
-  expect(screen.getByText('Close')).toBeInTheDocument();
+  expect(handleClose).toHaveBeenCalled();
 });

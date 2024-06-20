@@ -23,8 +23,8 @@
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover; /* Ensures the image maintains aspect ratio and covers the area */
   border: 5px solid white;
   border-radius: 50%;
