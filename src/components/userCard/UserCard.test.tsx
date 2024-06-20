@@ -2,8 +2,9 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react';
 import UserCard from './userCard';
+import { User } from '../../types/UserCardProps';
 
-const mockUser = {
+const mockUser: User = {
   id: 1,
   username: 'johndoe',
   firstname: 'John',
