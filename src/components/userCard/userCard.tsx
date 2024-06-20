@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Card, CardContent, Typography, Button, Box, Avatar } from '@mui/material';
 import UserModal from '../userModal/userModal';
 import './userCard.css';
-
 import { UserCardProps } from '../../types/UserCardProps';
 
 const UserCard: React.FC<UserCardProps> = ({ id, username, firstname, lastname, email, join_date, description, avatar, role }) => {
@@ -44,7 +43,7 @@ const UserCard: React.FC<UserCardProps> = ({ id, username, firstname, lastname, 
       <UserModal
         open={modalOpen}
         onClose={handleCloseModal}
-        user={{id, username, firstname, lastname, email, avatar, role, join_date, description }}
+        user={{ id, username, firstname, lastname, email, avatar, role, join_date, description }}
       />
     </>
   );
