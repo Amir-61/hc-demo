@@ -15,7 +15,7 @@ const UserModal: React.FC<UserModalProps> = ({ open, onClose, user }) => {
     <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>{user.firstname} {user.lastname}</DialogTitle>
       <DialogContent>
-        <img src={user.avatar} alt={`${user.firstname} ${user.lastname}`} style={{ width: '100%', borderRadius: '8px' }} />
+        <img src={user.avatar} alt={`${user.firstname} ${user.lastname}`} style={{borderRadius: '8px', objectFit: 'cover' }} />
         <Typography variant="body1" gutterBottom>
           Username: {user.username}
         </Typography>
